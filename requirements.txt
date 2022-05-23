@@ -1,0 +1,7 @@
+flask
+greenlet
+gevent
+#redis
+python-dotenv
+marshmallow
+requests
