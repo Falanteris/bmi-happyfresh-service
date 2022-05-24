@@ -5,3 +5,4 @@ gevent
 python-dotenv
 marshmallow
 requests
+prometheus-client
