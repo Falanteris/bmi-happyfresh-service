@@ -47,6 +47,6 @@ def calculate_bmi():
 
     metrics["total_entries"].labels(end_date.strftime("%Y-%m-%d")).inc()
 
-    metrics[result["label"]].labels(result["bmi"],end_date).inc()
+    metrics[result["label"]].labels(result["bmi"],end_date.strftime("%Y-%m-%d")).inc()
 
     return result,200
