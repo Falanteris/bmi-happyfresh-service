@@ -10,7 +10,9 @@ metrics = {
             "total_entries": Counter("BMI_SERVER_TOTAL_ENTRY","Jumlah API Call",["date"]),
             "overweight": Counter("BMI_SERVER_OVERWEIGHT_COUNT","Data Jumlah Entry yang Overweight",["value","timestamp"] ),
             "underweight": Counter("BMI_SERVER_UNDERWEIGHT_COUNT","Data Jumlah Entry yang Underweight",["value","timestamp"] ),
-            "healthy": Counter("BMI_SERVER_HEALTHY_COUNT","Data Jumlah Entry yang Underweight",["value","timestamp"] )
+            "healthy": Counter("BMI_SERVER_HEALTHY_COUNT","Data Jumlah Entry yang Underweight",["value","timestamp"] ),
+            "bmi":Counter("BMI_RESULT_DATA","Hasil Perhitungan BMI",["label"])
+            
 }
 app = Blueprint('transfer', __name__,url_prefix="/")
 
@@ -48,5 +50,7 @@ def calculate_bmi():
     metrics["total_entries"].labels(end_date.strftime("%Y-%m-%d")).inc()
 
     metrics[result["label"]].labels(result["bmi"],end_date.strftime("%Y-%m-%d")).inc()
+
+    metrics["bmi"].labels(result["label"]).inc()
 
     return result,200
