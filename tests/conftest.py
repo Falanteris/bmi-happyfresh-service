@@ -39,8 +39,12 @@ def bmi_parameters():
 
 @pytest.fixture(scope="class")
 def bmi_api_setup():
-    SERVICE_HOST = "0.0.0.0"
-    SERVICE_PORT = "9095"
+    SERVICE_HOST = os.getenv("SERVICE_HOST")
+    SERVICE_PORT = os.getenv("SERVICE_PORT")
+    if not SERVICE_HOST:
+       SERVICE_HOST = "0.0.0.0"
+    if not SERVICE_PORT:
+       SERVICE_PORT = "9095"
 
     print("Preparing sample environment")
     with open("../.env",mode="w") as envfile:
