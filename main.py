@@ -14,6 +14,8 @@ app.register_blueprint(calculator_endpoint)
 
 HOST = os.getenv("SERVICE_HOST")
 PORT = int(os.getenv("SERVICE_PORT"))
+MEMCACHE_HOST = os.getenv("MEMCACHE_HOST")
+MEMCACHE_PORT = int(os.getenv("MEMCACHE_PORT"))
 
 if __name__ == "__main__":
     http_server = WSGIServer((HOST,PORT), app)

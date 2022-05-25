@@ -8,9 +8,13 @@ services:
       environment:
          - SERVICE_HOST=0.0.0.0
          - SERVICE_PORT=8000
+         - MEMCACHE_HOST=memcached
+         - MEMCACHE_PORT=11211
+      depends_on:
+         - memcached
    app_test:
       build: .
-      command: bash -c "cd tests && pytest tests.py --disable-warnings"
+      command: bash -c "cd tests && pytest -k basic tests.py --disable-warnings"
       
       #ports:
       #   - 127.0.0.1:8000:8000
@@ -18,4 +22,15 @@ services:
       environment:
          - SERVICE_HOST=0.0.0.0
          - SERVICE_PORT=9099
+         - MEMCACHE_HOST=memcached_test
+         - MEMCACHE_PORT=11211
+
+      depends_on:
+         - memcached_test
+   memcached:
+      image: memcached
+
+   memcached_test:
+      image: memcached
+      
       
