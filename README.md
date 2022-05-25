@@ -42,6 +42,13 @@ All you need to do is `build` and `up` the service itself. Like so.
 
     # test your revision of the code with test suites
 
+Finally, remove the lingering containers
+
+    docker-compose stop app_test memcached_test
+
+    docker-compsoe rm -f
+
+
 - Configuration
 
 You can modify the environment of which the test server is being hosted at by changing the `SERVICE_HOST` and `SERVICE_PORT` environment.
