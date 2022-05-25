@@ -74,5 +74,3 @@ def bmi_existing_api_setup():
 
     for data in address_list:
         yield data
-
-    return SERVICE_HOST,SERVICE_PORT
