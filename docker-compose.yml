@@ -13,6 +13,8 @@ services:
          - MEMCACHE_PORT=11211
       depends_on:
          - memcached
+      volumes:
+         - ./bmilog:/usr/src/app/log
    app_test:
       build: .
       command: bash -c "cd tests && pytest -k basic tests.py --disable-warnings"
